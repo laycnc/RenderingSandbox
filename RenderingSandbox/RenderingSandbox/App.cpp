@@ -3,6 +3,9 @@
 
 #include <ppltasks.h>
 
+#include <ttl/ttl_variant.hpp>
+#include <ttl/ttl_expected.hpp>
+
 using namespace RenderingSandbox;
 
 using namespace concurrency;
@@ -19,6 +22,7 @@ using namespace Windows::Graphics::Display;
 [Platform::MTAThread]
 int main(Platform::Array<Platform::String^>^)
 {
+
 	auto direct3DApplicationSource = ref new Direct3DApplicationSource();
 	CoreApplication::Run(direct3DApplicationSource);
 	return 0;

@@ -62,16 +62,32 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
+    <Filter Include="natvis">
+      <UniqueIdentifier>{51d196a6-648e-4351-9b4e-01d8612d704a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ttl">
+      <UniqueIdentifier>{e6c05e53-5a3a-49ab-a3ce-9421670a67b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="RenderingSandboxMain.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="ttl\file\ttl_file.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="RenderingSandboxMain.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="ttl\file\ttl_file.hpp" />
+    <ClInclude Include="ttl\file\ttl_resources.hpp" />
+    <ClInclude Include="ttl\graphics\ttl_graphics_device.hpp" />
+    <ClInclude Include="ttl\graphics\ttl_graphics_shader.hpp" />
+    <ClInclude Include="ttl\graphics\ttl_graphics_shadow_renderer.hpp" />
+    <ClInclude Include="ttl\ttl_common.hpp" />
+    <ClInclude Include="ttl\ttl_expected.hpp" />
+    <ClInclude Include="ttl\ttl_type_traits.hpp" />
+    <ClInclude Include="ttl\ttl_variant.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\StoreLogo.png">
@@ -83,5 +99,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="RenderingSandbox_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="natvis\ttl_variant.natvis">
+      <Filter>natvis</Filter>
+    </Natvis>
   </ItemGroup>
 </Project>

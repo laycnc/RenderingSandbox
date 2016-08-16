@@ -1,8 +1,10 @@
 ﻿#pragma once
 
+#include <memory>
 #include "..\Common\DeviceResources.h"
 #include "ShaderStructures.h"
 #include "..\Common\StepTimer.h"
+#include <ttl/graphics/ttl_graphics_shader.hpp>
 
 namespace RenderingSandbox
 {
@@ -33,8 +35,8 @@ namespace RenderingSandbox
 		Microsoft::WRL::ComPtr<ID3D11InputLayout>	m_inputLayout;
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_vertexBuffer;
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_indexBuffer;
-		Microsoft::WRL::ComPtr<ID3D11VertexShader>	m_vertexShader;
-		Microsoft::WRL::ComPtr<ID3D11PixelShader>	m_pixelShader;
+		ttl::ghi::vertex_shader						m_vertex_shader;
+		ttl::ghi::pixel_shader						m_pixel_shader;
 		Microsoft::WRL::ComPtr<ID3D11Buffer>		m_constantBuffer;
 
 		// System resources for cube geometry.

@@ -151,7 +151,7 @@ void Sample3DSceneRenderer::Render()
 
 	// Attach our vertex shader.
 	context->VSSetShader(
-		m_vertexShader.Get(),
+		m_vertex_shader.get_shader(),
 		nullptr,
 		0
 		);
@@ -167,7 +167,7 @@ void Sample3DSceneRenderer::Render()
 
 	// Attach our pixel shader.
 	context->PSSetShader(
-		m_pixelShader.Get(),
+		m_pixel_shader.get_shader(),
 		nullptr,
 		0
 		);
@@ -188,14 +188,12 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 
 	// After the vertex shader file is loaded, create the shader and input layout.
 	auto createVSTask = loadVSTask.then([this](const std::vector<byte>& fileData) {
-		DX::ThrowIfFailed(
-			m_deviceResources->GetD3DDevice()->CreateVertexShader(
-				&fileData[0],
-				fileData.size(),
-				nullptr,
-				&m_vertexShader
-				)
-			);
+
+		m_vertex_shader.initialize(
+			m_deviceResources->GetD3DDevice(),
+			ttl::ghi::shader_resources(fileData.data(), fileData.size()),
+			nullptr
+		);
 
 		static const D3D11_INPUT_ELEMENT_DESC vertexDesc [] =
 		{
@@ -216,14 +214,12 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 
 	// After the pixel shader file is loaded, create the shader and constant buffer.
 	auto createPSTask = loadPSTask.then([this](const std::vector<byte>& fileData) {
-		DX::ThrowIfFailed(
-			m_deviceResources->GetD3DDevice()->CreatePixelShader(
-				&fileData[0],
-				fileData.size(),
-				nullptr,
-				&m_pixelShader
-				)
-			);
+
+		m_pixel_shader.initialize(
+			m_deviceResources->GetD3DDevice(),
+			ttl::ghi::shader_resources(fileData.data(), fileData.size()),
+			nullptr
+		);
 
 		CD3D11_BUFFER_DESC constantBufferDesc(sizeof(ModelViewProjectionConstantBuffer) , D3D11_BIND_CONSTANT_BUFFER);
 		DX::ThrowIfFailed(
@@ -315,9 +311,9 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 void Sample3DSceneRenderer::ReleaseDeviceDependentResources()
 {
 	m_loadingComplete = false;
-	m_vertexShader.Reset();
+	m_vertex_shader.release();
 	m_inputLayout.Reset();
-	m_pixelShader.Reset();
+	m_pixel_shader.release();
 	m_constantBuffer.Reset();
 	m_vertexBuffer.Reset();
 	m_indexBuffer.Reset();

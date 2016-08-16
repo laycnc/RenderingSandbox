@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+  <Type Name="ttl::variant&lt;*&gt;">
+    <DisplayString Condition="m_which == -1">empty</DisplayString>
+    <DisplayString Condition="m_which == 0">{*($T1*)&amp;m_storage}</DisplayString>
+    <Expand>
+      <Item Name="value" Condition="m_which == 0">*($T1*)&amp;m_storage</Item>
+    </Expand>
+  </Type>
+
+  <Type Name="ttl::variant&lt;*,*&gt;">
+    <DisplayString Condition="m_which == -1">empty</DisplayString>
+    <DisplayString Condition="m_which == 0">{*($T1*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 1">{*($T2*)&amp;m_storage}</DisplayString>
+    <Expand>
+      <Item Name="value" Condition="m_which == 0">*($T1*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 1">*($T2*)&amp;m_storage</Item>
+    </Expand>
+  </Type>
+
+  <Type Name="ttl::variant&lt;*,*,*&gt;">
+    <DisplayString Condition="m_which == -1">empty</DisplayString>
+    <DisplayString Condition="m_which == 0">{*($T1*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 1">{*($T2*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 2">{*($T3*)&amp;m_storage}</DisplayString>
+    <Expand>
+      <Item Name="value" Condition="m_which == 0">*($T1*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 1">*($T2*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 2">*($T3*)&amp;m_storage</Item>
+    </Expand>
+  </Type>
+
+  <Type Name="ttl::variant&lt;*,*,*,*&gt;">
+    <DisplayString Condition="m_which == -1">empty</DisplayString>
+    <DisplayString Condition="m_which == 0">{*($T1*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 1">{*($T2*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 2">{*($T3*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 3">{*($T4*)&amp;m_storage}</DisplayString>
+    <Expand>
+      <Item Name="value" Condition="m_which == 0">*($T1*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 1">*($T2*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 2">*($T3*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 3">*($T4*)&amp;m_storage</Item>
+    </Expand>
+  </Type>
+
+  <Type Name="ttl::variant&lt;*,*,*,*,*&gt;">
+    <DisplayString Condition="m_which == -1">empty</DisplayString>
+    <DisplayString Condition="m_which == 0">{*($T1*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 1">{*($T2*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 2">{*($T3*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 3">{*($T4*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 4">{*($T5*)&amp;m_storage}</DisplayString>
+    <Expand>
+      <Item Name="value" Condition="m_which == 0">*($T1*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 1">*($T2*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 2">*($T3*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 3">*($T4*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 4">*($T5*)&amp;m_storage</Item>
+    </Expand>
+  </Type>
+
+  <Type Name="ttl::variant&lt;*,*,*,*,*,*&gt;">
+    <DisplayString Condition="m_which == -1">empty</DisplayString>
+    <DisplayString Condition="m_which == 0">{*($T1*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 1">{*($T2*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 2">{*($T3*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 3">{*($T4*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 4">{*($T5*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_which == 5">{*($T6*)&amp;m_storage}</DisplayString>
+    <Expand>
+      <Item Name="value" Condition="m_which == 0">*($T1*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 1">*($T2*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 2">*($T3*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 3">*($T4*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 4">*($T5*)&amp;m_storage</Item>
+      <Item Name="value" Condition="m_which == 5">*($T6*)&amp;m_storage</Item>
+    </Expand>
+  </Type>
+
+
+  <Type Name="ttl::expected&lt;*,*&gt;">
+    <DisplayString Condition="m_storage.m_which == -1">empty</DisplayString>
+    <DisplayString Condition="m_storage.m_which == 0">{*($T1*)&amp;m_storage}</DisplayString>
+    <DisplayString Condition="m_storage.m_which == 1">{error, errorCode = {*($T2*)&amp;m_storage}}</DisplayString>
+    <Expand>
+      <Item Name="value" Condition="m_which == 0">*($T1*)&amp;m_storage</Item>
+      <Item Name="error" Condition="m_which == 0">*($T2*)&amp;m_storage</Item>
+    </Expand>
+  </Type>
+
+</AutoVisualizer>
